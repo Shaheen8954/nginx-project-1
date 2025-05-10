@@ -2,20 +2,23 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE_NAME = 'shaheen8954/nginx-project'
+        
     stages {
         stage('Clone repo') {
             steps {
-                git url: "https://github.com/Shaheen8954/nginx-project-1.git", branch: "main"
+                checkout scm
             }
         }
         stage('Build image') {
             steps {
-                sh "docker build -t nginx-project ."
+               docker-build()
             }
         }
         stage('Run container') {
             steps {
-               sh "docker run -d -p 80:80 nginx-project"
+               runDockerImage()
             }
         }
     }
