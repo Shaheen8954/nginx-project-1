@@ -14,12 +14,12 @@ pipeline {
         }
         stage('Build image') {
             steps {
-                docker-build('nginx-project', 'latest', 'shaheen8954')
+                docker-build()
             }
         }
         stage('Run container') {
             steps {
-                runDockerImage(env.DOCKER_IMAGE_NAME)
+              runDockerImage()
             }
         }
     }
