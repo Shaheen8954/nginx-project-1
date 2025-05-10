@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE_NAME = 'shaheen8954/nginx-project'
+        DOCKER_IMAGE_NAME = 'nginx-project'
         
     stages {
         stage('Clone repo') {
@@ -13,12 +13,13 @@ pipeline {
         }
         stage('Build image') {
             steps {
-               docker-build()
+               docker-build(nginx-project', 'latest')
+            })   
             }
         }
         stage('Run container') {
             steps {
-               runDockerImage()
+               runDockerImage(env.DOCKER_IMAGE_NAME)  
             }
         }
      }
