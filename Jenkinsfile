@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build image') {
             steps {
-               docker-build(nginx-project', 'latest')
+               docker build -t nginx-project
             })   
             }
         }
