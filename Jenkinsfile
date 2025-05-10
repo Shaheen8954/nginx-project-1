@@ -7,6 +7,13 @@ pipeline {
     }
 
     stages {
+           stage('Cleanup Workspace') {
+            steps {
+                script {
+                    cleanupWorkspace()
+                }
+            }
+        }
         stage('Clone repo') {
             steps {
                 checkout scm
