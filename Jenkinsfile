@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build image') {
             steps {
-               docker build -t nginx-project
+               sh "docker build -t nginx-project ."
             })   
             }
         }
