@@ -1,10 +1,11 @@
-@Library ('jenkins-shared-libraries@main') _
+@Library('jenkins-shared-libraries@main') _
 pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE_NAME = 'nginx-project'
-        
+        DOCKER_IMAGE_NAME = 'shaheen8954/nginx-project'
+    }
+
     stages {
         stage('Clone repo') {
             steps {
@@ -13,14 +14,13 @@ pipeline {
         }
         stage('Build image') {
             steps {
-               sh "docker build -t nginx-project ."
+                docker-build('nginx-project', 'latest', 'shaheen8954')
             }
         }
         stage('Run container') {
             steps {
-               runDockerImage(env.DOCKER_IMAGE_NAME)  
+                runDockerImage(env.DOCKER_IMAGE_NAME)
             }
         }
-     }
-  }
+    }
 }
