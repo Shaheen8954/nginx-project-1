@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Run container') {
             steps {
-              sh "docker run -d -p 8000:8000 nginx-project"
+              sh "docker run -d -p 80:80 nginx-project"
             }
         }
     }
