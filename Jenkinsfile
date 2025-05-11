@@ -1,10 +1,11 @@
 //@Library('jenkins-shared-libraries@main') _
 pipeline {
     agent any
-
-   // environment {
-     //   DOCKER_IMAGE_NAME = 'shaheen8954/nginx-project'
-  //  }
+    environment {
+        DOCKER_IMAGE_NAME = 'shaheen8954/nginx-project'
+        DOCKER_HUB_CREDS = "${env.DOCKER_HUB_USR}"
+        DOCKER_PASSWORD = "${env.DOCKER_HUB_CREDS_PSW}"
+    }
 
     stages {
            stage('Cleanup Workspace') {
