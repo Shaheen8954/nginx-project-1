@@ -2,9 +2,9 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_IMAGE_NAME = 'shaheen8954/nginx-project'
-    }
+   // environment {
+     //   DOCKER_IMAGE_NAME = 'shaheen8954/nginx-project'
+  //  }
 
     stages {
            stage('Cleanup Workspace') {
