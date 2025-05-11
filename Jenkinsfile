@@ -8,12 +8,11 @@ pipeline {
 
     stages {
            stage('Cleanup Workspace') {
-            steps {
-            //    script {
-                    cleanupWorkspace()
-                }
-            }
-      //  }
+               steps {
+                   cleanWs()
+               }
+          }
+
         stage('welcome') {
             steps {
                 echo "hello everyone"
