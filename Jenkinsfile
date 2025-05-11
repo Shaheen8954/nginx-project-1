@@ -14,6 +14,11 @@ pipeline {
                 }
             }
         }
+        stage('welcome') {
+            steps {
+                hello()
+            }
+        }
         stage('Clone repo') {
             steps {
                 checkout scm
