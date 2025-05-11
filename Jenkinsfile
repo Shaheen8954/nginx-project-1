@@ -31,6 +31,7 @@ pipeline {
         stage('push image') {
             steps {
                sh 'docker tag nginx-project shaheen8954/nginx-project'
+               sh 'echo ${dockerpassword} | docker login -u ${dockerUser} --password-stdin'
                sh 'docker push shaheen8954/nginx-project'
             }
         }
