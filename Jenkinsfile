@@ -7,13 +7,13 @@ pipeline {
   //  }
 
     stages {
-           stage('Cleanup Workspace') {
-            steps {
-                script {
-                    cleanupWorkspace()
-                }
-            }
-        }
+         // **  stage('Cleanup Workspace') {
+          //  steps {
+            //    script {
+              //      cleanupWorkspace()
+                //}
+          //  }
+      //  }
         stage('welcome') {
             steps {
                 echo "hello everyone"
