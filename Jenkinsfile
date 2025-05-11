@@ -7,12 +7,12 @@ pipeline {
   //  }
 
     stages {
-         // **  stage('Cleanup Workspace') {
-          //  steps {
+           stage('Cleanup Workspace') {
+            steps {
             //    script {
-              //      cleanupWorkspace()
-                //}
-          //  }
+                    cleanupWorkspace()
+                }
+            }
       //  }
         stage('welcome') {
             steps {
