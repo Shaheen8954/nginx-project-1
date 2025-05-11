@@ -1,4 +1,4 @@
-@Library('jenkins-shared-libraries@main') _
+//@Library('jenkins-shared-libraries@main') _
 pipeline {
     agent any
 
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('welcome') {
             steps {
-                hello()
+                echo "hello everyone"
             }
         }
         stage('Clone repo') {
@@ -26,12 +26,12 @@ pipeline {
         }
         stage('Build image') {
             steps {
-                docker-build()
+               sh "docker build -t nginx-project ."
             }
         }
         stage('Run container') {
             steps {
-              runDockerImage()
+              sh "docker run -d -p 8000:8000 nginx-project"
             }
         }
     }
