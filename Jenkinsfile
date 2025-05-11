@@ -28,6 +28,12 @@ pipeline {
                sh "docker build -t nginx-project ."
             }
         }
+        stage('push image') {
+            steps {
+               sh 'docker tag nginx-project shaheen8954/nginx-project'
+               sh 'docker push shaheen8954/nginx-project'
+            }
+        }
         stage('Run container') {
             steps {
               sh 'docker stop $(docker ps -aq); docker rm $(docker ps -aq)'
