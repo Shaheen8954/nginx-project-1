@@ -19,16 +19,19 @@ pipeline {
                 echo 'hello everyone'
             }
         }
+
         stage('Clone repo') {
             steps {
                 checkout scm
             }
         }
+
         stage('Build image') {
             steps {
                 sh 'docker build -t nginx-project .'
             }
         }
+
         stage('push image') {
             steps {
                 sh 'docker tag nginx-project shaheen8954/nginx-project'
@@ -36,6 +39,7 @@ pipeline {
                 sh 'docker push shaheen8954/nginx-project'
             }
         }
+
         stage('Run container') {
             steps {
                 sh 'docker stop $(docker ps -aq); docker rm $(docker ps -aq)'
@@ -50,8 +54,8 @@ pipeline {
                  body: 'Hello, its done',
                  replyTo: 'nshaheen488@gmail.com'
         }
-    }
-       failure {
+
+        failure {
             mail to: 'nshaheen488@gmail.com',
                  subject: 'Testing done',
                  body: 'Hello, its fail',
