@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_HUB_CREDS = credentials('dockerhub-creds')
+        DOCKER_HUB_CREDS = credentials('dockerhub-cred')
         dockerUser = "${env.DOCKER_HUB_CREDS_USR}"
         dockerpassword = "${env.DOCKER_HUB_CREDS_PSW}"
     }
