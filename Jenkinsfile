@@ -42,12 +42,13 @@ pipeline {
               sh "docker run -d -p 80:80 nginx-project"
             }
         }
-        success {
-            script{
-                emailtext attechlog: true,
-                    from: 'nshaheen488@gmail.com',
-                    subject: "pipeline successfull ho gayi"
+        post{
+        success{
+            mail to: 'nshaheen488@gmail.com',
+                 subject: 'Testing done',
+                 body: 'Hello, its done',
+                 replyTo: 'nshaheen488@gmail.com'
             }
-        }
+         }
     }
 }
