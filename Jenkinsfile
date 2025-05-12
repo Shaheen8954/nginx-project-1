@@ -1,4 +1,4 @@
-//@Library('jenkins-shared-libraries@main') _
+@Library('jenkins-shared-libraries@main') _
 pipeline {
     agent any
     environment {
@@ -16,7 +16,7 @@ pipeline {
 
         stage('welcome') {
             steps {
-                echo 'hello everyone'
+                hello()
             }
         }
 
@@ -50,14 +50,14 @@ pipeline {
         success {
             mail to: 'nshaheen488@gmail.com',
                  subject: 'Testing done',
-                 body: 'Hello, its done',
+                 body: 'Hello, the pipeline finished successfully!',
                  replyTo: 'nshaheen488@gmail.com'
         }
 
         failure {
             mail to: 'nshaheen488@gmail.com',
-                 subject: 'Testing done',
-                 body: 'Hello, its fail',
+                 subject: 'Pipeline Failed',
+                 body: 'Hello, the pipeline failed. Please check the Jenkins logs.',
                  replyTo: 'nshaheen488@gmail.com'
         }
     }
