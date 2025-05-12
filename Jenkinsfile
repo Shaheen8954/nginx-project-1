@@ -51,4 +51,11 @@ pipeline {
                  replyTo: 'nshaheen488@gmail.com'
         }
     }
+       failure {
+            mail to: 'nshaheen488@gmail.com',
+                 subject: 'Testing done',
+                 body: 'Hello, its fail',
+                 replyTo: 'nshaheen488@gmail.com'
+        }
+    }
 }
