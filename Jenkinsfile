@@ -42,7 +42,7 @@ pipeline {
               sh "docker run -d -p 80:80 nginx-project"
             }
         }
-        post{
+        post(
            success{
                mail to: 'nshaheen488@gmail.com',
                  subject: 'Testing done',
