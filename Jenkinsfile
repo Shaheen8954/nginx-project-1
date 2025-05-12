@@ -2,9 +2,9 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE_NAME = 'shaheen8954/nginx-project'
-        DOCKER_HUB_CREDS = "${env.DOCKER_HUB_USR}"
-        DOCKER_PASSWORD = "${env.DOCKER_HUB_CREDS_PSW}"
+        DOCKER_HUB_CREDS = credentials('dockerhub-creds')
+        dockerUser = "${env.DOCKER_HUB_CREDS_USR}"
+        dockerpassword = "${env.DOCKER_HUB_CREDS_PSW}"
     }
 
     stages {
