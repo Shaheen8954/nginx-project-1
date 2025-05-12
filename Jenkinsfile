@@ -32,14 +32,18 @@ pipeline {
             }
         }
 
-        stage('push image') {
+        stage('push to dockerhub') {
             steps {
-                sh 'docker tag nginx-project shaheen8954/nginx-project'
-                // sh 'echo ${dockerpassword} | docker login -u ${dockerUser} --password-stdin'
-                sh 'docker push shaheen8954/nginx-project'
+                withCredentials([usernamePassword(
+                credentiaksId: "dockerHubCreds",
+                usernameVeriable: "dockerHubUser",
+                passwordVeriable: "dockerHubPass")]){
+                sh 'echo $dockerHubPass | docker login -u $dockerHubUser --password-stdin'
+                sh "docker tag nginx-project ${env.dockerHubUser}/nginx-project"
+                sh "docker push ${dockerHubUser}/nginx-project"
             }
         }
-
+    }
         stage('Run container') {
             steps {
                 sh 'docker stop $(docker ps -aq); docker rm $(docker ps -aq)'
