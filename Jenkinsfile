@@ -44,9 +44,7 @@ pipeline {
         }
         post{
            success{
-           post{
-        success{
-            mail to: 'your@mail.com',
+               mail to: 'your@mail.com',
                  subject: 'Testing done',
                  body: 'Hello, its done',
                  replyTo: 'your@mail.com'
