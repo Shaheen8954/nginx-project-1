@@ -43,12 +43,15 @@ pipeline {
             }
         }
         post{
+           success{
+           post{
         success{
-            mail to: 'nshaheen488@gmail.com',
+            mail to: 'your@mail.com',
                  subject: 'Testing done',
                  body: 'Hello, its done',
-                 replyTo: 'nshaheen488@gmail.com'
-            }
+                 replyTo: 'your@mail.com'
+
+             }
          }
     }
 }
