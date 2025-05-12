@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE_NAME = 'shaheen8954/nginx-project'
         DOCKER_HUB_CREDS = "${env.DOCKER_HUB_USR}"
-        DOCKER_PASSWORD = "${env.DOCKER_HUB_CREDS_Psw}"
+        DOCKER_PASSWORD = "${env.DOCKER_HUB_CREDS_PSW}"
     }
 
     stages {
@@ -34,14 +34,9 @@ pipeline {
 
         stage('push to dockerhub') {
             steps {
-               // withCredentials([usernamePassword(
-              //  credentiaksId: "dockerHubCreds",
-               // usernameVeriable: "dockerHubUser",
-           //     passwordVeriable: "dockerHubPass")]){
-                sh 'echo $DOCKER_HUB_CREDS_Psw | docker login -u $DOCKER_HUB_USR --password-stdin'
+                sh 'echo $DOCKER_HUB_CREDS_PSW | docker login -u $DOCKER_HUB_USR --password-stdin'
                 sh "docker tag nginx-project ${env.DOCKER_HUB_USR}/nginx-project"
                 sh "docker push ${env.DOCKER_HUB_USR}/nginx-project"
-           // }
         }
     }
         stage('Run container') {
