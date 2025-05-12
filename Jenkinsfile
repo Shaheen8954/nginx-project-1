@@ -34,9 +34,9 @@ pipeline {
 
         stage('push to dockerhub') {
             steps {
-                sh "echo $DOCKER_HUB_CREDS_PSW | docker login -u $DOCKER_HUB_USR --password-stdin"
-                sh "docker tag nginx-project ${env.DOCKER_HUB_USR}/nginx-project"
-                sh "docker push ${env.DOCKER_HUB_USR}/nginx-project"
+                sh "echo $dockerpassword | docker login -u $dockerUser --password-stdin"
+                sh "docker tag nginx-project ${env.dockerUser}/nginx-project"
+                sh "docker push ${env.dockerUser}/nginx-project"
         }
     }
         stage('Run container') {
