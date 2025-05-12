@@ -44,10 +44,10 @@ pipeline {
         }
         post{
            success{
-               mail to: 'your@mail.com',
+               mail to: 'nshaheen488@gmail.com',
                  subject: 'Testing done',
                  body: 'Hello, its done',
-                 replyTo: 'your@mail.com'
+                 replyTo: 'nshaheen488@gmail.com'
 
              }
          }
